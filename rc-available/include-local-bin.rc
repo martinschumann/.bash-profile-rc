@@ -1,6 +1,8 @@
 pathmunge()
 {
-    if [[ ! $(echo $PATH | /usr/bin/egrep -q "(^|:)$1($|:)") ]]; then
+    binary=$(which egrep)
+
+    if [[ ! $(echo $PATH | "${binary}" -q "(^|:)${1}($|:)") ]]; then
         PATH=$1:$PATH
     fi
 }
@@ -8,3 +10,5 @@ pathmunge()
 if [[ -d "${HOME}/bin" ]]; then
     pathmunge "${HOME}/bin"
 fi
+
+unset pathmunge
