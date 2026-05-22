@@ -4,7 +4,7 @@
 
 # bash-profile-rc
 
-Comforting on a machine with Bash as default shell by adding aliases, defining functions and setting shell variables. Provides an enable/disable mechanism by symlinking disassembled rc-files. Additionally includes a pre-commit hook to syntax check PHP, JSON and YAML files (given that PyYAML is installed).
+Comforting on a machine with Bash as default shell by adding aliases, defining functions and setting shell variables. Provides an enable/disable mechanism by symlinking disassembled rc-files. Additionally includes a pre-commit hook to syntax check PHP, JSON and YAML files (given that PHP and PyYAML are installed).
 
 ## Installation
 
