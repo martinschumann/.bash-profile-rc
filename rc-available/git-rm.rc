@@ -1,0 +1,4 @@
+alias git-rm='git rm'
+alias git-rm-keep-local='git rm --cached'
+alias g-rm='git rm'
+alias g-rm-keep-local='git rm --cached'

@@ -1,1 +1,2 @@
-alias ga='git add -v'
+alias git-add='git add -v'
+alias g-add='git add -v'

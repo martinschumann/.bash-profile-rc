@@ -1,1 +1,2 @@
-alias gm='git merge'
+alias git-merge='git merge'
+alias g-merge='git merge'

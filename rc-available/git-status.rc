@@ -1,1 +1,1 @@
-alias gst='git status'
+alias gstatus='git status'

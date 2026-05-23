@@ -1,1 +1,2 @@
-alias gpu='git push'
+alias git-push='git push'
+alias g-push='git push'

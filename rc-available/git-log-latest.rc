@@ -1,0 +1,2 @@
+alias git-log-latest='git log --oneline -1'
+alias g-log-latest='git log --oneline -1'

@@ -1,0 +1,23 @@
+docker-nuke()
+{
+    # containers
+    if [[ $(docker ps -aq | wc -l) -gt 0 ]]; then
+        docker stop $(docker ps -aq);
+        docker rm -f $(docker ps -aq);
+        docker system prune -a --volumes --force;
+    fi
+
+    # volumes
+    if [[ $(docker volume ls -q | wc -l) -gt 0 ]]; then
+        docker volume rm $(docker volume ls -q);
+    fi
+
+    # networks
+    docker network prune -f
+
+    # builds
+    docker builder prune -f --all
+
+    # build history
+    docker buildx history rm -f --all
+}
