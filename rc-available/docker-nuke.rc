@@ -1,5 +1,13 @@
 docker-nuke()
 {
+    _confirm_docker_nuke() {
+        echo "Do you really want to nuke Docker data? This removes all containers, volumes, images, networks and builds!";
+        read -rp "[y/N] " yn
+        [[ $yn =~ ^[Yy]$ ]]
+    }
+
+    _confirm_docker_nuke || return 1;
+
     # containers
     if [[ $(docker ps -aq | wc -l) -gt 0 ]]; then
         docker stop $(docker ps -aq);
@@ -12,12 +20,17 @@ docker-nuke()
         docker volume rm $(docker volume ls -q);
     fi
 
+    # images
+    if [[ $(docker images -aq | wc -l) -gt 0 ]]; then
+        docker rmi -f $(docker images -aq);
+    fi
+
     # networks
-    docker network prune -f
+    docker network prune -f;
 
     # builds
-    docker builder prune -f --all
+    docker builder prune -f --all;
 
     # build history
-    docker buildx history rm --all
+    docker buildx history rm --all;
 }
