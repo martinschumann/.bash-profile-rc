@@ -11,33 +11,33 @@ Comforting on a machine with Bash as default shell by adding aliases, defining f
 Download repo.
 
 ```bash
-$ git clone git@github.com:martinschumann/bash-profile-rc.git
-$ cd bash-profile-rc
+git clone git@github.com:martinschumann/.bash-profile-rc.git
+cd bash-profile-rc
 ```
 
 Link repo's `.bash_profile` as start up file.
 
 ```bash
-$ ./link-bash-profile.sh
+./link-bash-profile.sh
 ```
 
 Enable all run command files.
 
 ```bash
-$ ./enable-rc.sh all
-$ source ~/.bash_profile
+./enable-rc.sh all
+source ~/.bash_profile
 ```
 
 Enable only a specific command.
 
 ```bash
-$ ./enable-rc.sh outgoing-ip
-$ source ~/.bash_profile
+./enable-rc.sh outgoing-ip
+source ~/.bash_profile
 ```
 
 Disable all run command files.
 
 ```bash
-$ ./disable-rc.sh all
-$ source ~/.bash_profile
+./disable-rc.sh all
+source ~/.bash_profile
 ```
