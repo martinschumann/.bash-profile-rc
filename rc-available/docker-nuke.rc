@@ -19,5 +19,5 @@ docker-nuke()
     docker builder prune -f --all
 
     # build history
-    docker buildx history rm -f --all
+    docker buildx history rm --all
 }
