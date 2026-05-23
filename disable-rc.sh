@@ -8,7 +8,7 @@ source "${directory}/lib.message.sh"
 commands=();
 commands+=('all')
 
-if [[ -d "${directory}/rc-enabled" ]]; then
+if [[ -d "${directory}/rc-available" ]]; then
     for file in $(/bin/bash -c "/bin/ls ${directory}/rc-enabled/*.rc 2>/dev/null");
         do
             if [ -f "$file" ]; then
@@ -28,9 +28,14 @@ elif
     exit 1
 fi;
 
-if [[ ! -f "${directory}/rc-enabled/${1}.rc" && "${1}" != "all" ]]; then
+if [[ ! -f "${directory}/rc-available/${1}.rc" && "${1}" != "all" ]]; then
     _printMessage "Unknown command \"${1}\". Please provide one of:" "error"
     printf '    * %s\n' "${commands[@]}"
+    exit 1
+fi;
+
+if [[ ! -f "${directory}/rc-enabled/${1}.rc" && "${1}" != "all" ]]; then
+    _printMessage "Command \"${1}\" not enabled." "error"
 fi;
 
 cd "${directory}/rc-enabled"
