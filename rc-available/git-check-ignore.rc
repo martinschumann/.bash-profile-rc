@@ -1,0 +1,2 @@
+alias git-check-ignore='git check-ignore -v'
+alias g-check-ignore='git check-ignore -v'
