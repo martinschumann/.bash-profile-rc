@@ -1,0 +1,2 @@
+alias git-stash='git stash'
+alias g-stash='git stash'
