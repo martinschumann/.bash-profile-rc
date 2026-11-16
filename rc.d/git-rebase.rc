@@ -1,0 +1,2 @@
+alias git-rebase='git rebase'
+alias g-rebase='git rebase'

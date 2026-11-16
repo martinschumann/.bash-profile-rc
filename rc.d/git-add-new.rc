@@ -1,0 +1,2 @@
+alias git-add-new='git add -v $(git ls-files -o --exclude-standard)'
+alias g-add-new='git add -v $(git ls-files -o --exclude-standard)'

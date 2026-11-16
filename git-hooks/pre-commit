@@ -1,0 +1,49 @@
+#!/bin/bash
+
+_printMessage() {
+    printf '[%s] %s\n' "$2" "$1"
+}
+
+[[ ! $(which php 2>/dev/null) ]] && _printMessage "Git pre-commit script cannot be executed. No PHP binary found." "error" && exit 1
+
+status=0
+# Syntax check PHP files
+for file in $(git status --porcelain | grep '^[AM]' | grep '\.php$' | awk '{ print $2; }'); do
+    message=$(php -l $file 2>/dev/null);
+
+    if [ $? -gt 0 ]; then
+        _printMessage "Pre-commit error for PHP syntax validation in file \"$file\":" "error"
+        echo  ${message}
+        status=1
+    fi
+done
+
+# Syntax check YAML files
+for file in $(git status --porcelain | grep '^[AM]' | grep '\.y[a]*ml$' | awk '{ print $2; }'); do
+    [[ ! $(which python 2>/dev/null) ]] && _printMessage "No Python binary found. YAML validation will be skipped." "info" && break; 
+    [[ ! $(which pip 2>/dev/null) || ! $(pip show PyYAML 2>/dev/null) ]] && _printMessage "PyYAML parser not found. YAML validation will be skipped." "info" && break;
+
+    message=$(python -c "from yaml import load, Loader; load(open('${file}'), Loader=Loader)" 2>&1);
+
+    if [ $? -gt 0 ]; then
+        _printMessage "Pre-commit error for YAML Validation in file \"$file\":" "error"; 
+        echo ${message}
+        status=1
+    fi
+done
+
+# Syntax check JSON files
+for file in $(git status --porcelain | grep '^[AM]' | grep '.json' | awk '{ print $2; }'); do
+    cat $file | php -r "\$return = (json_decode(file_get_contents('php://stdin'))) ? 0 : 1; exit(\$return);"
+
+    if [ $? -gt 0 ]; then
+        _printMessage "Pre-commit error for JSON syntax validation in file \"$file\":" "error"
+        status=1
+    fi
+done
+
+if [ $status -lt 1 ]; then
+    _printMessage "Passed all pre-commit checks." "success"
+fi;
+
+exit $status

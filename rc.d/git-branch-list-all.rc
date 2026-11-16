@@ -1,0 +1,2 @@
+alias git-branch-list-all='git branch --list --all'
+alias g-branch-list-all='git branch --list --all'

@@ -1,0 +1,2 @@
+alias git-checkout='git checkout'
+alias g-checkout='git checkout'

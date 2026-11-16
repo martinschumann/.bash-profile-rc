@@ -1,0 +1,4 @@
+# One snippet from rc.d or rc.d-custom per line, without the .rc extension.
+git-status
+outgoing-ip
+timestamp

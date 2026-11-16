@@ -1,0 +1,2 @@
+alias git-status='git status'
+alias g-status='git status'

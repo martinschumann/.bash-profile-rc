@@ -1,0 +1,2 @@
+alias git-diff='git diff'
+alias g-diff='git diff'

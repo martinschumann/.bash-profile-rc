@@ -1,0 +1,8 @@
+docker-enter-image() {
+    if [[ $# -gt 0 ]]; then
+        docker run -it --entrypoint /bin/bash "${1}"
+    else
+        echo "Usage: docker-enter-image ID";
+        docker images --no-trunc;
+    fi
+}

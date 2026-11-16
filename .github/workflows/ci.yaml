@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  install:
+    name: Install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Load configured snippets in fresh Bash sessions
+        run: |
+          printf 'outgoing-ip\n' > enabled.conf
+          bash --noprofile --norc -c 'source ./bash-rc.sh && alias outgoing-ip'
+
+          : > enabled.conf
+          bash --noprofile --norc -c 'source ./bash-rc.sh && ! alias outgoing-ip 2>/dev/null'
