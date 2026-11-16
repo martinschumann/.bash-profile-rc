@@ -1,5 +1,5 @@
 <p align="left">
-<a href="https://github.com/martinschumann/bash-profile-rc/actions"><img src="https://github.com/martinschumann/bash-profile-rc/actions/workflows/ci.yaml/badge.svg" alt></a>
+<a href="https://github.com/martinschumann/.bash-profile-rc/actions"><img src="https://github.com/martinschumann/.bash-profile-rc/actions/workflows/ci.yaml/badge.svg" alt></a>
 </p>
 
 # .bash-profile-rc
