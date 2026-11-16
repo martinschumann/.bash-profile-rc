@@ -1,0 +1,1 @@
+alias curl-response-time='curl -s -w "%{url_effective}: %{time_total}\n" -o /dev/null'
