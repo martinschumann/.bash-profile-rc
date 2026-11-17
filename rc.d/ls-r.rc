@@ -1,0 +1,3 @@
+ls-r() {
+    find "${1:-.}" -exec ls -ldah {} + | less -RF
+}
