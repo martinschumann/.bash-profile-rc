@@ -1,0 +1,3 @@
+ls-rn() {
+    find "${1:-.}" \( -name '.*' -not -path "${1:-.}" \) -prune -o -exec ls -ldah {} + | less -RF
+}

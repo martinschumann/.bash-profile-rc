@@ -1,0 +1,3 @@
+ls-rs() {
+    find "${1:-.}" -type f -exec ls -ldah {} + | sort -k5 -hr | less -RF
+}
