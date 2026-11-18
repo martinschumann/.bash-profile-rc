@@ -1,0 +1,1 @@
+alias l='ls -lah "${BASH_RC_LS_COLOR_OPTIONS[@]}"'
