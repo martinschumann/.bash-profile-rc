@@ -1,3 +1,7 @@
 ls-rn() {
-    find "${1:-.}" \( -name '.*' -not -path "${1:-.}" \) -prune -o -exec ls -ldah {} + | less -RF
+    CLICOLOR_FORCE=1 \
+    find "${1:-.}" \
+        \( -name '.*' -not -path "${1:-.}" \) -prune -o \
+        -exec ls -ldah "${BASH_RC_LS_COLOR_OPTIONS[@]}" {} + |
+        less -KRF
 }
