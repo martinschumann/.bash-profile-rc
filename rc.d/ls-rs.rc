@@ -1,0 +1,6 @@
+ls-rs() {
+    CLICOLOR_FORCE=1 \
+    find "${1:-.}" -type f \
+        -exec ls -ldah "${BASH_RC_LS_COLOR_OPTIONS[@]}" {} + | sort -k5 -hr | \
+        less -KRF
+}
