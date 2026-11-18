@@ -1,4 +1,16 @@
 # Source this file from Bash.
+
+BASH_RC_LS_COLOR_OPTIONS=()
+
+case "$OSTYPE" in
+    darwin*)
+        BASH_RC_LS_COLOR_OPTIONS=(-G)
+        ;;
+    linux*)
+        BASH_RC_LS_COLOR_OPTIONS=(--color=always)
+        ;;
+esac
+
 _bash_rc_load() {
     local directory snippet file found
     local -a snippets=()
